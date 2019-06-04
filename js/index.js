@@ -109,10 +109,10 @@ window.onload = function() {
     const hm = new Hammer(board)
     // handle touch input
     hm.on('hammer.input', function(ev) {
-        // console.log(ev)
+        console.log(ev)
         if(ev.isFirst) {
             console.log('first')
-            if(ev.srcEvent.ctrlKey) {
+            if(ev.srcEvent.ctrlKey || ev.maxPointers ===2) {
                 currPath = startDraw(ev, {
                     segments: [ev.center],
                     strokeColor: globalState.strokeColor,
