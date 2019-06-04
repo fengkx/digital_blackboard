@@ -109,10 +109,9 @@ window.onload = function() {
     const hm = new Hammer(board, {touchAction: 'none'})
     // handle touch input
     hm.on('hammer.input', function(ev) {
-        console.log(ev)
         if(ev.isFirst) {
-            console.log('first')
-            if(ev.srcEvent.ctrlKey || ev.maxPointers ===2) {
+            if(ev.srcEvent.ctrlKey) ev.maxPointers = 2
+            if(ev.maxPointers === 2) {
                 currPath = startDraw(ev, {
                     segments: [ev.center],
                     strokeColor: globalState.strokeColor,
@@ -131,6 +130,7 @@ window.onload = function() {
         } else {
             duringDraw(ev, currPath)
         }
+        console.log(ev)
     })
 
     const guestureDector = new Hammer.Manager(document.getElementById('guesture-decetor'))

@@ -25650,12 +25650,10 @@ window.onload = function () {
   }); // handle touch input
 
   hm.on('hammer.input', function (ev) {
-    console.log(ev);
-
     if (ev.isFirst) {
-      console.log('first');
+      if (ev.srcEvent.ctrlKey) ev.maxPointers = 2;
 
-      if (ev.srcEvent.ctrlKey || ev.maxPointers === 2) {
+      if (ev.maxPointers === 2) {
         currPath = startDraw(ev, {
           segments: [ev.center],
           strokeColor: globalState.strokeColor,
@@ -25674,6 +25672,8 @@ window.onload = function () {
     } else {
       duringDraw(ev, currPath);
     }
+
+    console.log(ev);
   });
   var guestureDector = new _hammerjs.default.Manager(document.getElementById('guesture-decetor'));
   var swipe = new _hammerjs.default.Swipe({
@@ -25738,7 +25738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34127" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40525" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
