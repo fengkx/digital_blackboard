@@ -5,6 +5,7 @@ html, body {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    touch-action: none
 }
 
 #board {
