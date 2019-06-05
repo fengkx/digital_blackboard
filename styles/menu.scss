@@ -1,66 +1,69 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:700&display=swap");
 
 $bottom-bar-height: 3rem;
 .bottom {
-    height: $bottom-bar-height;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+	height: $bottom-bar-height;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
 
-    transition-property: display, bottom;
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
+	transition-property: display, bottom;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-in-out;
 
+	.menu {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		touch-action: none;
 
-    .menu {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        touch-action: none;
-    
-        .menu-item {
-            width: $bottom-bar-height;
-            height: $bottom-bar-height;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 0;
-            border-right: 4px solid #ccc;
-            outline: 0;
-            background-color: cornflowerblue;
-        }
-        :last-child {
-            border-right: 0;
-        }
-        .menu-item.icon {
-            color: white;
-            font-size: $bottom-bar-height/2;
-        }
+		.menu-item {
+			width: $bottom-bar-height;
+			height: $bottom-bar-height;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 0;
+			border-right: 4px solid #ccc;
+			outline: 0;
+			background-color: cornflowerblue;
+		}
+		:last-child {
+			border-right: 0;
+		}
 
-        .stroke-size {
-            color: white;
-            text-align: center;
-            font-size: 2.3rem;
-            font-weight: 1000;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
+		button:active {
+			transform: translateY(2px);
+		}
 
-        #stroke-color {
-            opacity: 0;
-        }
-        
-        #stroke-color-wrapper {
-            width: $bottom-bar-height;
-            height: $bottom-bar-height;
-        }
-        
-    }
+		.menu-item.icon {
+			color: white;
+			font-size: $bottom-bar-height/2;
+		}
 
-    #guesture-decetor {
-        max-width: 40rem;
-        max-height: 50px;
-        height: 4rem;
-        width: 30rem;
-        margin: auto;
-    }
+		.stroke-size {
+			color: white;
+			text-align: center;
+			font-size: 2.3rem;
+			font-weight: 1000;
+			font-family: "Roboto Condensed", sans-serif;
+		}
+
+		#stroke-color {
+			opacity: 0;
+		}
+
+		#stroke-color-wrapper {
+			width: $bottom-bar-height;
+			height: $bottom-bar-height;
+		}
+	}
+
+	#guesture-decetor {
+		max-width: 40rem;
+		max-height: 50px;
+		height: 4rem;
+		width: 30rem;
+		margin: auto;
+	}
 }
