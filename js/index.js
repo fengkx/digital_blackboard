@@ -146,12 +146,10 @@ window.onload = function() {
     guestureDector.on('show-menu', function(ev) {
         console.log('show-menu')
         const bottomBar = document.getElementById('bottom-bar')
-        document.querySelector('.menu').hidden = false
         const h = bottomBar.clientHeight
         bottomBar.style.bottom = h + 'px'
         setTimeout(() => {
             bottomBar.style.bottom=0
-            document.querySelector('.menu').hidden = true
         }, 4000)
     })
 }

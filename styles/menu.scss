@@ -16,6 +16,7 @@ $bottom-bar-height: 3rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        touch-action: none;
     
         .menu-item {
             width: $bottom-bar-height;
