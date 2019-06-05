@@ -11,6 +11,17 @@ const defaultOptions = {
     blendMode: 'normal',
 }
 
+//globalState and basiclly default value
+const globalState = {
+    backgroudColor: '#000000',
+    strokeWidth: 4,
+    strokeColor: '#ffffff',
+    lastPointsNum: 0 // record the pointsNum
+
+}
+
+let currPath
+
 window.onload = function() {
     console.log('window Loaded!')
 
@@ -22,15 +33,6 @@ window.onload = function() {
 
     //debug mode
     paper.install(window)
-
-    let currPath
-
-    //globalState and basiclly default value
-    const globalState = {
-        backgroudColor: '#000000',
-        strokeWidth: 4,
-        strokeColor: '#ffffff',
-    }
 
     // bind color of input to its father's bgcolor
     const strokeColorInput = document.getElementById('stroke-color')
@@ -111,10 +113,17 @@ window.onload = function() {
     hm.on('hammer.input', function(ev) {
         if(ev.isFirst) {
             if(ev.srcEvent.ctrlKey) ev.maxPointers = 2
+<<<<<<< HEAD
             if(ev.maxPointers === 2) {
+=======
+            globalState.lastPointsNum = ev.maxPointers
+            if(ev.maxPointers === 2) {
+                //earse
+                console.log(ev)
+>>>>>>> master
                 currPath = startDraw(ev, {
                     segments: [ev.center],
-                    strokeColor: globalState.strokeColor,
+                    strokeColor: globalState.backgroudColor,
                     strokeWidth: globalState.strokeWidth < 12 ? globalState.strokeWidth * 10: globalState.strokeWidth * 2 + 20,
                     blendMode: 'destination-out'
                 })
@@ -161,10 +170,23 @@ function startDraw(ev, options={}) {
 }
 
 function duringDraw(ev, path) {
+    if(globalState.lastPointsNum !== ev.maxPointers) {
+        console.log(globalState.lastPointsNum,ev.maxPointers)
+        endDraw(ev, path)
+        currPath = startDraw(ev, {
+            segments: [ev.center],
+            strokeColor: globalState.strokeColor,
+            strokeWidth: globalState.strokeWidth < 12 ? globalState.strokeWidth * 10: globalState.strokeWidth * 2 + 20,
+            blendMode: 'destination-out'
+        })
+        return
+    }
     path.add(ev.center)
 }
 
 function endDraw(ev, path) {
     console.log('end Draw in x:' +ev.center.x + ', y: ' + ev.center.y)
+    globalState.lastPointsNum = ev.maxPointers
+    console.log({lastPointsNum: globalState.lastPointsNum})
     path.simplify(3)
 }
