@@ -113,14 +113,10 @@ window.onload = function() {
     hm.on('hammer.input', function(ev) {
         if(ev.isFirst) {
             if(ev.srcEvent.ctrlKey) ev.maxPointers = 2
-<<<<<<< HEAD
-            if(ev.maxPointers === 2) {
-=======
             globalState.lastPointsNum = ev.maxPointers
             if(ev.maxPointers === 2) {
                 //earse
                 console.log(ev)
->>>>>>> master
                 currPath = startDraw(ev, {
                     segments: [ev.center],
                     strokeColor: globalState.backgroudColor,
